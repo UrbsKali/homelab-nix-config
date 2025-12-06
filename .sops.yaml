@@ -1,0 +1,10 @@
+keys:
+  - &erotips_key age16gphpztm4tpyccmglc4x83t9kxx276adrydcp45u5quu5sx0u40q0mswu5
+  - &urbai_key age1hnzc46wyme338ssyva3apgxf0ntx0tjrphce6re9wq736s8ny90qsxwjyv
+
+creation_rules:
+  - path_regex: secrets[\\/]secrets\.yaml$
+    key_groups:
+      - age:
+          - *erotips_key
+          - *urbai_key
