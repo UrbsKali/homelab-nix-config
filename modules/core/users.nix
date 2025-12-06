@@ -8,9 +8,9 @@
     description = "This PC is sooo freakin used";
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [];
-    hashedPassword = config.sops.secrets."user_passwords/urbai";
-    openssh.authorizedKeys.keys = [
-      config.sops.secrets."ssh_keys/0"
+    hashedPasswordFile = config.sops.secrets."user_passwords/urbai".path;
+    openssh.authorizedKeys.keyFiles = [
+      config.sops.secrets."ssh_keys/0".path
     ];
     shell = pkgs.zsh;
   };
