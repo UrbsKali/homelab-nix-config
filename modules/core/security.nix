@@ -47,10 +47,10 @@
       PasswordAuthentication = false;
       KbdInteractiveAuthentication = false;
       PermitRootLogin = "no";
-      AllowTcpForwarding = "no";
-      X11Forwarding = "no";
-      AllowAgentForwarding = "no";
-      AllowStreamLocalForwarding = "no";
+      AllowTcpForwarding = false;
+      X11Forwarding = false;
+      AllowAgentForwarding = false;
+      AllowStreamLocalForwarding = false;
       AuthenticationMethods = "publickey";
     };
   };
