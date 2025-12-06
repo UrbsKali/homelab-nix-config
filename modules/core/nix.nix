@@ -3,6 +3,7 @@
 {
   # Nix settings
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.download-buffer-size = 2147483648; # 2048MB
 
   # Automatic Garbage Collection
   nix.gc = {
