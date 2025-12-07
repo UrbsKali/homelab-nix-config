@@ -17,7 +17,7 @@
   # NOTE: This requires building with --impure
   environment.etc."sops-nix/key.txt".source = /var/lib/sops-nix/key.txt;
 
-  services.getty.autologinUser = "root";
+  services.getty.autologinUser = lib.mkForce "root";
 
   systemd.services.auto-install = {
     wantedBy = [ "multi-user.target" ];
