@@ -26,7 +26,7 @@
   boot.loader.grub.useOSProber = true;
 
   # LVM Mount for Docker Volume
-  fileSystems."/home/dvb/docker/volumes/media/_data" = {
+  fileSystems."/home/dvb/docker/volumes/media-stack_torrent-downloads/_data" = {
     device = "/dev/media-vol/media-lv";
     fsType = "ext4";
   };
