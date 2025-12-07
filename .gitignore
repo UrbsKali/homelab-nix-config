@@ -1,0 +1,32 @@
+# Nix build results
+result
+result-*
+flake.lock
+
+# Direnv
+.direnv/
+.envrc
+
+# Editor/IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Sops / Secrets
+# We commit the encrypted secrets.yaml, but ignore any potential decrypted outputs or keys
+*.decrypted.*
+keys.txt
+age.key
+
+# OS generated files
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Temporary files
+tmp/
+*.log
+*.bak
