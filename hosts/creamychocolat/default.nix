@@ -5,7 +5,17 @@
     ./hardware-configuration.nix
     ../../modules/core
     ../../modules/services/docker.nix
+    ../../modules/services/tunnel.nix
   ];
+
+  services.tunnel = {
+    enable = true;
+    secrets = {
+      id = "tunnel-creamy/id";
+      secret = "tunnel-creamy/secret";
+      endpoint = "tunnel-creamy/endpoint";
+    };
+  };
 
   networking.hostName = "creamychocolat";
 
@@ -16,8 +26,8 @@
   networking.defaultGateway = "192.168.1.1";
   networking.nameservers = [ "1.1.1.1" "8.8.8.8" ];
 
-  # Open ports for sure.am 
-  networking.firewall.allowedTCPPorts = [ 3000 ];
+  # Open ports for sure.am and Affine
+  networking.firewall.allowedTCPPorts = [ 3000 3010 ];
 
 
   # Bootloader

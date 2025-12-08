@@ -10,6 +10,8 @@
 
   networking.hostName = "erotips";
 
+  services.tunnel.enable = true;
+
   networking.interfaces.enp6s0.ipv4.addresses = [{
     address = "192.168.1.44";
     prefixLength = 24;
