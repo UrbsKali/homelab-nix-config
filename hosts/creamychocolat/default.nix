@@ -16,6 +16,10 @@
   networking.defaultGateway = "192.168.1.1";
   networking.nameservers = [ "1.1.1.1" "8.8.8.8" ];
 
+  # Open ports for sure.am 
+  networking.firewall.allowedTCPPorts = [ 3000 ];
+
+
   # Bootloader
   boot.loader.grub.enable = true;
   boot.loader.grub.device = "nodev";
