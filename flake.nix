@@ -2,8 +2,8 @@
   description = "Homelab NixOS Configuration";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-24.11";
-    sops-nix.url = "github:Mic92/sops-nix";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-25.11";
+    sops-nix.url = "github:Mic92/sops-nix/17eea6f3816ba6568b8c81db8a4e6ca438b30b7c";
     sops-nix.inputs.nixpkgs.follows = "nixpkgs";
   };
 
@@ -23,13 +23,6 @@
         modules = [
           ./hosts/creamychocolat
           sops-nix.nixosModules.sops
-        ];
-      };
-      creamychocolat-iso = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        specialArgs = { inherit inputs; };
-        modules = [
-          ./hosts/creamychocolat/iso.nix
         ];
       };
     };

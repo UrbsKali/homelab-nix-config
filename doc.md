@@ -122,6 +122,8 @@ nix flake update
 sudo nixos-rebuild switch --flake .#<hostname>
 ```
 
+All hosts also run a daily automatic upgrade from `github:UrbsKali/homelab-nix-config#<hostname>` at `04:15`, with up to `45min` of randomized delay to avoid synchronized maintenance. If the upgraded generation requires a reboot, it is allowed between `04:00` and `06:00`.
+
 ### Garbage Collection
 
 Garbage collection is automated to run weekly, deleting generations older than 30 days. To run manually:

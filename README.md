@@ -46,6 +46,7 @@ The configuration is built using **Nix Flakes** and structured into reusable mod
 
 * **Security Hardened**: Kernel hardening, AppArmor, Auditd, Fail2Ban, and restricted SSH.
 * **Secret Management**: All secrets are encrypted using **Sops** with **Age**.
+* **Automatic Updates & Reboots**: Hosts check the flake daily and may reboot automatically during the maintenance window when an upgrade requires it.
 * **Modular Design**: Configuration is split into logical components (Networking, Security, System, etc.).
 * **Zsh & Starship**: Pre-configured shell environment.
 
