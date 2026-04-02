@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 
 {
   imports = [
@@ -10,7 +10,28 @@
 
   networking.hostName = "erotips";
 
+  # This host uses static interface config, so do not generate NM-managed networking.
+  networking.networkmanager.enable = lib.mkForce false;
+  networking.useDHCP = lib.mkForce false;
+
   services.tunnel.enable = true;
+
+  # Enable Intel VA-API on Sandy Bridge (i7-2600) for container passthrough via /dev/dri.
+  hardware.graphics = {
+    enable = true;
+    extraPackages = with pkgs; [
+      intel-vaapi-driver
+      libvdpau-va-gl
+      vaapiVdpau
+      intel-media-driver
+    ];
+  };
+
+  # i7-2600 uses the legacy i965 VA-API path.
+  environment.sessionVariables.LIBVA_DRIVER_NAME = "i965";
+
+  # Allow the interactive user to access GPU device nodes for validation tools.
+  users.users.urbai.extraGroups = [ "video" "render" ];
 
   networking.interfaces.enp6s0.ipv4.addresses = [{
     address = "192.168.1.44";
