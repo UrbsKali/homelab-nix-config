@@ -2,6 +2,7 @@
 {
   virtualisation.docker = {
     enable = true;
+    package = pkgs.docker_29;
     autoPrune.enable = true; # Auto-remove unused containers/images
     daemon.settings = {
       data-root = "/home/dvb/docker";
