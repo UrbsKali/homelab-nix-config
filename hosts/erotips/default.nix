@@ -43,9 +43,9 @@
   # Open ports for media services (Jellyseerr, Jellyfin, Radarr, Sonarr, Qbittorrent, Prowlarr)
   networking.firewall.allowedTCPPorts = [ 5055 8096 7878 8989 5080 9696 ];
 
-  # Bootloader
+  # Bootloader: root filesystem is on /dev/sda; the data disks are /dev/sdb and /dev/sdc.
   boot.loader.grub.enable = true;
-  boot.loader.grub.device = "/dev/sdc"; # Updated to sdc based on lsblk
+  boot.loader.grub.device = "/dev/sda";
   boot.loader.grub.useOSProber = true;
 
   # LVM Mount for Docker Volume

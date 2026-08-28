@@ -21,8 +21,8 @@ This document provides a detailed overview of the server configuration, modules,
 * **IP Address**: `192.168.1.44`
 * **Interface**: `enp6s0`
 * **Storage**:
-  * Boot: `/dev/sdc` (GRUB)
-  * Data: LVM Volume Group `media-vol` on `/dev/sda` + `/dev/sdb`
+  * Boot: `/dev/sda` (GRUB)
+  * Data: LVM Volume Group `media-vol` on `/dev/sdb` + `/dev/sdc`
   * Mount: `/home/dvb/docker/volumes/media/_data`
 * **Services**:
   * Docker (with auto-prune)
