@@ -15,5 +15,27 @@
 
     shell = pkgs.zsh;
   };
+
+  users.users.dokploy = {
+    isNormalUser = true;
+    description = "Dokploy deployment user";
+    extraGroups = [ "wheel" ];
+    hashedPassword = "!";
+    openssh.authorizedKeys.keys = [
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFyu+vDhk1w6wmzWhft3HluzYvtSvj+m+rJCDYre0Eki dokploy"
+    ];
+  };
+
+  security.sudo.extraRules = [
+    {
+      users = [ "dokploy" ];
+      commands = [
+        {
+          command = "ALL";
+          options = [ "NOPASSWD" ];
+        }
+      ];
+    }
+  ];
 }
 
