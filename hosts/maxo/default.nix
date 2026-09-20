@@ -48,6 +48,12 @@
         "read only" = "no";
         "guest ok" = "no";
         "valid users" = "urbai";
+        "force user" = "urbai";
+        "force group" = "users";
+        "create mask" = "0660";
+        "directory mask" = "0770";
+        "force create mode" = "0660";
+        "force directory mode" = "0770";
       };
       media = {
         path = "/data/media";
