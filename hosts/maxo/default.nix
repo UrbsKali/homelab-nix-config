@@ -67,11 +67,11 @@
   };
 
   fileSystems = {
-    "/tank/ente" = { device = "tank/ente"; fsType = "zfs"; };
-    "/tank/nas" = { device = "tank/nas"; fsType = "zfs"; };
-    "/tank/backups" = { device = "tank/backups"; fsType = "zfs"; };
-    "/data/media" = { device = "data/media"; fsType = "zfs"; };
-    "/data/docker" = { device = "data/docker"; fsType = "zfs"; };
+    "/tank/ente" = { device = "tank/ente"; fsType = "zfs"; options = [ "zfsutil" ]; };
+    "/tank/nas" = { device = "tank/nas"; fsType = "zfs"; options = [ "zfsutil" ]; };
+    "/tank/backups" = { device = "tank/backups"; fsType = "zfs"; options = [ "zfsutil" ]; };
+    "/data/media" = { device = "data/media"; fsType = "zfs"; options = [ "zfsutil" ]; };
+    "/data/docker" = { device = "data/docker"; fsType = "zfs"; options = [ "zfsutil" ]; };
   };
 
   networking.firewall.allowedTCPPorts = [ 80 443 2049 ];

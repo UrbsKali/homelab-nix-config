@@ -44,7 +44,7 @@ in
         StateDirectory = "pangolin";
         Environment = [
           "HOME=/var/lib/pangolin"
-          "PATH=${lib.makeBinPath [ pkgs.bash ]}"
+          "PATH=${lib.makeBinPath [ pkgs.bash pkgs.coreutils ]}"
         ];
         ExecStart = "${pkgs.writeShellScript "launch-script" ''
           #!/bin/sh
