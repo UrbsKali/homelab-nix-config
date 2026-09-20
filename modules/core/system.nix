@@ -9,10 +9,10 @@
       RebootWatchdogSec = lib.mkDefault "30s";
       KExecWatchdogSec = lib.mkDefault "1m";
     };
-    sleep.extraConfig = ''
-      AllowSuspend=no
-      AllowHibernation=no
-    '';
+    sleep.settings.Sleep = {
+      AllowSuspend = false;
+      AllowHibernation = false;
+    };
   };
   
   boot.initrd.systemd.suppressedUnits = lib.mkIf config.systemd.enableEmergencyMode [

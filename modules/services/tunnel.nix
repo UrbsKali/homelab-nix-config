@@ -1,9 +1,10 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, inputs, ... }:
 
 with lib;
 
 let
   cfg = config.services.tunnel;
+  unstablePkgs = inputs.nixpkgs-unstable.legacyPackages.${pkgs.system};
 in
 {
   options.services.tunnel = {
@@ -47,7 +48,10 @@ in
           SECRET=$(cat ${config.sops.secrets.${cfg.secrets.secret}.path})
           ENDPOINT=$(cat ${config.sops.secrets.${cfg.secrets.endpoint}.path})
           
-          /root/newt --id "$ID" --secret "$SECRET" --endpoint "$ENDPOINT"
+          exec ${unstablePkgs.pangolin-cli}/bin/pangolin-cli up site \
+            --id "$ID" \
+            --secret "$SECRET" \
+            --endpoint "$ENDPOINT"
         ''}";
       };
     };

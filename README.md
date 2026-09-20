@@ -9,6 +9,7 @@ The configuration is built using **Nix Flakes** and structured into reusable mod
 * **Hosts**:
   * `erotips` (192.168.1.44): Media server & Docker host with LVM storage.
   * `creamychocolat` (192.168.1.35): General purpose server.
+    * `maxo` (10.0.0.36): Replacement Docker and tunnel host with ZFS storage.
 * **Core Modules**: Common configuration applied to all hosts (Security, Networking, Users, Shell).
 * **Services**: Specific service definitions (Docker, Tunnels).
 
@@ -40,6 +41,9 @@ The configuration is built using **Nix Flakes** and structured into reusable mod
 
     # For creamychocolat
     sudo nixos-rebuild switch --flake .#creamychocolat
+
+    # For maxo
+    sudo nixos-rebuild switch --flake .#maxo
     ```
 
 ## 🔐 Key Features

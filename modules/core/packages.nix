@@ -4,8 +4,10 @@
   # System Packages
   environment.systemPackages = with pkgs; [
     git
+    curl
+    openssl
     python3
-    neofetch
+    fastfetch
     tmux
     wget
     screen
@@ -22,7 +24,9 @@
     ncdu        # Disk usage analyzer (ncurses)
     lsof        # List open files/ports
     jq          # JSON processor (great for API debugging)
+    rclone
     zip
     unzip
+    smartmontools # Disk health monitoring
   ];
 }
