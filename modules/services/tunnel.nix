@@ -56,7 +56,8 @@ in
           exec ${unstablePkgs.pangolin-cli}/bin/pangolin up site \
             --id "$ID" \
             --secret "$SECRET" \
-            --endpoint "$ENDPOINT"
+            --endpoint "$ENDPOINT" \
+            --silent
         ''}";
       };
     };
