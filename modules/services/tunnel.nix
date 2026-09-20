@@ -1,10 +1,9 @@
-{ config, lib, pkgs, inputs, ... }:
+{ config, lib, pkgs, ... }:
 
 with lib;
 
 let
   cfg = config.services.tunnel;
-  unstablePkgs = inputs.nixpkgs-unstable.legacyPackages.${pkgs.system};
 in
 {
   options.services.tunnel = {
@@ -41,11 +40,6 @@ in
       serviceConfig = {
         Type = "oneshot";
         RemainAfterExit = true;
-        StateDirectory = "pangolin";
-        Environment = [
-          "HOME=/var/lib/pangolin"
-          "PATH=${lib.makeBinPath [ pkgs.bash pkgs.coreutils ]}"
-        ];
         ExecStart = "${pkgs.writeShellScript "launch-script" ''
           #!/bin/sh
           # Read secrets from sops files
@@ -53,11 +47,7 @@ in
           SECRET=$(cat ${config.sops.secrets.${cfg.secrets.secret}.path})
           ENDPOINT=$(cat ${config.sops.secrets.${cfg.secrets.endpoint}.path})
           
-          exec ${unstablePkgs.pangolin-cli}/bin/pangolin up site \
-            --id "$ID" \
-            --secret "$SECRET" \
-            --endpoint "$ENDPOINT" \
-            --silent
+          /root/newt --id "$ID" --secret "$SECRET" --endpoint "$ENDPOINT"
         ''}";
       };
     };
