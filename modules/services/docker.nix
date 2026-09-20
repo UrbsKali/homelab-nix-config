@@ -16,6 +16,5 @@
   
   environment.systemPackages = [ pkgs.docker-compose ];
   
-  users.users.dokploy.extraGroups = [ "docker" ];
   users.users.urbai.extraGroups = [ "docker" ];
 }
