@@ -34,6 +34,38 @@
     pools = [ "tank" "data" ];
   };
 
+  services.samba = {
+    enable = true;
+    openFirewall = true;
+    settings = {
+      global = {
+        "server description" = "Homelab NAS";
+        workgroup = "WORKGROUP";
+        "security" = "user";
+      };
+      nas = {
+        path = "/tank/nas";
+        "read only" = "no";
+        "guest ok" = "no";
+        "valid users" = "urbai";
+      };
+      media = {
+        path = "/data/media";
+        "read only" = "yes";
+        "guest ok" = "no";
+        "valid users" = "urbai";
+      };
+    };
+  };
+
+  services.nfs.server = {
+    enable = true;
+    exports = ''
+      /tank/nas 10.0.0.0/24(rw,sync,no_subtree_check)
+      /data/media 10.0.0.0/24(ro,sync,no_subtree_check)
+    '';
+  };
+
   fileSystems = {
     "/tank/ente" = { device = "tank/ente"; fsType = "zfs"; };
     "/tank/nas" = { device = "tank/nas"; fsType = "zfs"; };
@@ -42,7 +74,8 @@
     "/data/docker" = { device = "data/docker"; fsType = "zfs"; };
   };
 
-  networking.firewall.allowedTCPPorts = [ 80 443 ];
+  networking.firewall.allowedTCPPorts = [ 80 443 2049 ];
+  networking.firewall.allowedUDPPorts = [ 2049 ];
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;

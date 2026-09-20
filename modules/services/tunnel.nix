@@ -48,7 +48,7 @@ in
           SECRET=$(cat ${config.sops.secrets.${cfg.secrets.secret}.path})
           ENDPOINT=$(cat ${config.sops.secrets.${cfg.secrets.endpoint}.path})
           
-          exec ${unstablePkgs.pangolin-cli}/bin/pangolin-cli up site \
+          exec ${unstablePkgs.pangolin-cli}/bin/pangolin up site \
             --id "$ID" \
             --secret "$SECRET" \
             --endpoint "$ENDPOINT"
