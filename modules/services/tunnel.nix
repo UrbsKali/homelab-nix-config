@@ -42,7 +42,10 @@ in
         Type = "oneshot";
         RemainAfterExit = true;
         StateDirectory = "pangolin";
-        Environment = "HOME=/var/lib/pangolin";
+        Environment = [
+          "HOME=/var/lib/pangolin"
+          "PATH=${lib.makeBinPath [ pkgs.bash ]}"
+        ];
         ExecStart = "${pkgs.writeShellScript "launch-script" ''
           #!/bin/sh
           # Read secrets from sops files
