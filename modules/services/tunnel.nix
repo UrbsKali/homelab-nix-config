@@ -41,6 +41,8 @@ in
       serviceConfig = {
         Type = "oneshot";
         RemainAfterExit = true;
+        StateDirectory = "pangolin";
+        Environment = "HOME=/var/lib/pangolin";
         ExecStart = "${pkgs.writeShellScript "launch-script" ''
           #!/bin/sh
           # Read secrets from sops files
