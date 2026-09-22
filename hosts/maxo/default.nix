@@ -73,7 +73,7 @@
   };
 
   fileSystems = {
-    "/tank/ente" = { device = "tank/ente"; fsType = "zfs"; options = [ "zfsutil" ]; };
+    "/tank/s3" = { device = "tank/s3"; fsType = "zfs"; options = [ "zfsutil" ]; };
     "/tank/nas" = { device = "tank/nas"; fsType = "zfs"; options = [ "zfsutil" ]; };
     "/tank/backups" = { device = "tank/backups"; fsType = "zfs"; options = [ "zfsutil" ]; };
     "/data/media" = { device = "data/media"; fsType = "zfs"; options = [ "zfsutil" ]; };
