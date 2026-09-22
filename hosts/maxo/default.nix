@@ -85,4 +85,10 @@
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+
+  # Else the RustFS S3 is failing to boot because the ZFS pools are not mounted yet.
+  systemd.services.docker = {
+    after = [ "zfs-mount.service" ];
+    requires = [ "zfs-mount.service" ];
+  };
 }
