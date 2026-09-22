@@ -88,7 +88,7 @@
 
   # Else the RustFS S3 is failing to boot because the ZFS pools are not mounted yet.
   systemd.services.docker = {
-    after = [ "zfs-mount.service" ];
-    requires = [ "zfs-mount.service" ];
+    after = [ "data-docker.mount" "tank-s3.mount" ];
+    requires = [ "data-docker.mount" "tank-s3.mount" ];
   };
 }
