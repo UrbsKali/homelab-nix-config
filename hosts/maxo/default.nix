@@ -15,10 +15,10 @@
   networking.networkmanager.enable = lib.mkForce false;
   networking.useDHCP = lib.mkForce false;
   networking.interfaces.eno2.ipv4.addresses = [{
-    address = "10.0.0.36";
+    address = "192.168.1.3";
     prefixLength = 24;
   }];
-  networking.defaultGateway = "10.0.0.1";
+  networking.defaultGateway = "192.168.1.1";
   networking.nameservers = [ "1.1.1.1" "8.8.8.8" ];
 
   services.tunnel.enable = true;
@@ -67,8 +67,8 @@
   services.nfs.server = {
     enable = true;
     exports = ''
-      /tank/nas 10.0.0.0/24(rw,sync,no_subtree_check)
-      /data/media 10.0.0.0/24(ro,sync,no_subtree_check)
+      /tank/nas 192.168.1.0/24(rw,sync,no_subtree_check)
+      /data/media 192.168.1.0/24(ro,sync,no_subtree_check)
     '';
   };
 
